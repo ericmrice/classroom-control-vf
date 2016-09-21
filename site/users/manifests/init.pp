@@ -6,6 +6,8 @@ user { 'fundamentals':
   
 user { 'bart':
   ensure => present,
+  home => '/home/bart',
+  managehome => true,
   }
   
 }
