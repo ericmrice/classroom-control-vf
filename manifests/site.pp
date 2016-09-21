@@ -47,6 +47,8 @@ node default {
     path => '/etc/motd',
     ensure => file,
     owner => 'root',
+    mode => '664',
+    group => 'root',
     content => 'Puppet is cool!',
   }
 }
