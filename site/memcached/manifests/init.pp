@@ -10,15 +10,14 @@ class memcached {
     group => 'root',
     mode => '0644',
     path => '/etc/sysconfig/memcached',
-    require => package['memcached'],
+    require => Package['memcached'],
     source => 'puppet:///modules/memcached/memcached',
   }
 
   service { 'memcached':
     ensure => running,
-    subscribe => file['memcached'],
+    enable => true,
+    subscribe => File['memcached'],
   }
-
-
 
 }
