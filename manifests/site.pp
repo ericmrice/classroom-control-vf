@@ -47,18 +47,14 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Hello, my name is ${::hostname}": }
-  #file { 'motd':
-   # path => '/etc/motd',
-  #  ensure => file,
-  #  owner => 'root',
-  #  mode => '664',
-  #  group => 'root',
-  #  content => 'Puppet is cool!',
-  #}
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
     cwd => '/etc',
     path => ['/usr/local/bin',],
     creates => '/etc/motd',
     }
+
+if $::virtual != 'physical' {
+$vmname = capitalize($::virtual)
+notify { "This is a ${vmname} virtual machine.": }
 
 }
